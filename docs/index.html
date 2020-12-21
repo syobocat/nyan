@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>にゃん語ジェネレーター</title>
+  </head>
+  <body>
+    <textarea id="input" name="input" cols="200" rows="20" placeholder="入力"></textarea><br />
+    <button onclick="On_Click()">変換</button><br />
+    <textarea readonly id="output" name="output" cols="200" rows="20" placeholder="出力"></textarea><br />
+    <script src="./pkg/hello_wasm.js"></script>
+    <script>
+      const { translate } = wasm_bindgen;
+      async function On_Click() {
+        await wasm_bindgen('./pkg/hello_wasm_bg.wasm');
+        const original = document.getElementById("input").value;
+        document.getElementById("output").value = translate(original);
+      }
+    </script>
+  </body>
+</html>
