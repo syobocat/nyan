@@ -33,7 +33,7 @@
         var bunmatsu = document.getElementsByClassName("bunmatsu");
         bunmatsu[0].onchange = function() {  
           if (this.value == "other") {
-            nyaoptions[0].checked = false;
+            nyaoptions.getElementById("nai_to_nyai").checked = false;
             otherinput.style.display = 'inline';
             nyaoptions.style.display = 'none';
           } else {
