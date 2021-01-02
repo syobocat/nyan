@@ -46,10 +46,11 @@
       async function On_Click() {
         await wasm_bindgen('./pkg/nyan_genelator_bg.wasm');
         const original = document.getElementById("input").value;
+        var replacer = "";
         if (document.getElementsByClassName("bunmatsu").value == "other") {
-          const replacer = document.getElementById("other").value;
+          replacer = document.getElementById("other").value;
         } else {
-          const replacer = document.getElementsByClassName("bunmatsu").value;
+          replacer = document.getElementsByClassName("bunmatsu").value;
         }
         document.getElementById("output").value = translate(original, replacer, document.getElementById("nai_to_nyai").checked);
       }
