@@ -83,15 +83,19 @@ let wasm_bindgen;
     }
     /**
     * @param {string} text
+    * @param {string} bunmatsu
+    * @param {boolean} nai_to_nyai
     * @returns {string}
     */
-    __exports.translate = function(text) {
+    __exports.translate = function(text, bunmatsu, nai_to_nyai) {
         try {
             const retptr = wasm.__wbindgen_export_0.value - 16;
             wasm.__wbindgen_export_0.value = retptr;
             var ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
             var len0 = WASM_VECTOR_LEN;
-            wasm.translate(retptr, ptr0, len0);
+            var ptr1 = passStringToWasm0(bunmatsu, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+            var len1 = WASM_VECTOR_LEN;
+            wasm.translate(retptr, ptr0, len0, ptr1, len1, nai_to_nyai);
             var r0 = getInt32Memory0()[retptr / 4 + 0];
             var r1 = getInt32Memory0()[retptr / 4 + 1];
             return getStringFromWasm0(r0, r1);
