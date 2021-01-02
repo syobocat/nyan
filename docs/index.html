@@ -34,6 +34,7 @@
         bunmatsu[0].onchange = function() {  
           if (this.value == "other") {
             document.getElementById("nai_to_nyai").checked = false;
+            otherinput.value = "";
             otherinput.style.display = 'inline';
             nyaoptions.style.display = 'none';
           } else {
