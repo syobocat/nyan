@@ -1,14 +1,14 @@
 {
-  "name": "hello-wasm",
+  "name": "nyan-genelator",
   "collaborators": [
     "syobon-tech <syobon_tech@outlook.com>"
   ],
   "version": "0.1.0",
   "files": [
-    "hello_wasm_bg.wasm",
-    "hello_wasm.js",
-    "hello_wasm.d.ts"
+    "nyan_genelator_bg.wasm",
+    "nyan_genelator.js",
+    "nyan_genelator.d.ts"
   ],
-  "browser": "hello_wasm.js",
-  "types": "hello_wasm.d.ts"
+  "browser": "nyan_genelator.js",
+  "types": "nyan_genelator.d.ts"
 }
