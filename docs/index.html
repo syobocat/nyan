@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>にゃん語ジェネレーター</title>
+    <title>にゃん語ジェネレーター ver.1.2</title>
   </head>
   <body>
     <textarea id="input" name="input" cols="200" rows="20" placeholder="入力"></textarea><br />
@@ -36,6 +36,7 @@
             otherinput.style.display = 'inline';
             nyaoptions.style.display = 'none';
           } else {
+            otherinput.value = this.value;
             otherinput.style.display = 'none';
             nyaoptions.style.display = 'block';
           }
@@ -46,12 +47,7 @@
       async function On_Click() {
         await wasm_bindgen('./pkg/nyan_genelator_bg.wasm');
         const original = document.getElementById("input").value;
-        var replacer = "";
-        if (document.getElementsByClassName("bunmatsu").value == "other") {
-          replacer = document.getElementById("other").value;
-        } else {
-          replacer = document.getElementsByClassName("bunmatsu").value;
-        }
+        const replacer = document.getElementById("other").value;
         document.getElementById("output").value = translate(original, replacer, document.getElementById("nai_to_nyai").checked);
       }
     </script>
