@@ -2,25 +2,92 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>にゃん語ジェネレーター ver.1.2</title>
+    <title>にゃん語ジェネレーター ver.1.3</title>
   </head>
   <body>
-    <textarea id="input" name="input" cols="200" rows="20" placeholder="入力"></textarea><br />
+    <h1>にゃん語ジェネレーター ver.1.3</h1>
+    <textarea id="input" class="input" rows="20" placeholder="入力"></textarea><br>
     <div class="options">
       <label for="bunmatsu">文末</label>
       <select id="bunmatsu" class="bunmatsu">
         <option value="にゃ" selected>にゃ</option>
         <option value="にゃん">にゃん</option>
+        <option value="にゃー">にゃー</option>
         <option value="other">その他</option>
       </select>
-      <input type="text" id="other" value="にゃ">
+      <input class="otherinput" type="text" id="other" value="にゃ">
       <div class="nyaoptions">
         <input type="checkbox" id="nai_to_nyai">
         <label for="nai_to_nyai">「ない」を「にゃい」に変換</label>
       </div>
-      <button onclick="On_Click()">変換</button>
     </div>
-    <textarea readonly id="output" name="output" cols="200" rows="20" placeholder="出力"></textarea><br />
+    <button class="convert" onclick="On_Click()">変換</button><br>
+    <textarea readonly id="output" class="output" rows="20" placeholder="出力"></textarea><br>
+    <div class="left-aligned">
+      <h2>アップデート履歴</h2>
+      <p>
+        <dl>
+          <dt><b>Ver.1.0</b> 2020年12月21日</dt>
+          <dd>公開。</dd>
+          <br>
+          <dt><b>Ver.1.1</b> 2021年1月2日</dt>
+          <dd>「ない」を「にゃい」に変換する機能の搭載</dd>
+          <br>
+          <dt><b>Ver.1.2</b> 2021年1月2日</dt>
+          <dd>語尾を変える機能搭載</dd>
+          <br>
+          <dt><b>Ver.1.3</b> 2021年1月3日</dt>
+          <dd>文末判定の強化、サイトレイアウトの変更</dd>
+        </dl>
+      </p>
+      <br>
+      <h2>既知の不具合</h2>
+      <ul>
+        <li>
+          「ます」がうまく変換されない<br>
+          「上一段活用動詞+ます」と「五段活用動詞+ます」の区別がつけられなかったため放置しています。<br>
+          「下一段活用動詞+ます」は変換されます。
+        </li>
+        <li>
+          イ音便、撥音便が文末に来るとおかしくなる<br>
+          「イ音便/撥音便+過去の助動詞『だ』」と「断定の助動詞『だ』」の区別がつけられなかったため放置しています。
+        </li>
+      </ul>
+      これらの問題を解決するためには形態素解析が必要ですが、実装の方法がわからないため解決されることはないと思います。<br>
+      許してにゃん。
+    </div>
+
+    <!--ここからスタイル-->
+    <style>
+      body {
+        text-align: center;
+      }
+
+      .input, .output {
+        width: 90vw;
+        height: 35vh;
+      }
+
+      .options {
+        text-align: left;
+        margin: 10px auto;
+        width:300px;
+      }
+
+      .otherinput {
+        display: none;
+      }
+
+      .convert {
+        font-size: large;
+      }
+
+      .left-aligned {
+        margin-top: 10vh;
+        margin-left: 10vw;
+        text-align: left;
+      }
+    </style>
 
     <!--ここから内部処理-->
     <script src="./pkg/nyan_genelator.js"></script>
@@ -28,7 +95,6 @@
       var otherinput = document.getElementById("other");
       var nyaoptions = document.getElementsByClassName("nyaoptions")[0];
 
-      otherinput.style.display = "none";
       document.addEventListener('DOMContentLoaded', function() {
         var bunmatsu = document.getElementsByClassName("bunmatsu");
         bunmatsu[0].onchange = function() {  
@@ -53,5 +119,9 @@
         document.getElementById("output").value = translate(original, replacer, document.getElementById("nai_to_nyai").checked);
       }
     </script>
+    <noscript>
+      <p>このページではJavaScriptを使用しています。</p>
+      </noscript>
+
   </body>
 </html>
