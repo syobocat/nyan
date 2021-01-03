@@ -3,9 +3,9 @@ use regex::Regex;
 
 #[wasm_bindgen]
 pub fn translate(text: &str, bunmatsu: &str, nai_to_nyai: bool) -> String {
-    let re1 = Regex::new(r"(.+?)(である|だ|です)(。|\(|\s||!|\?|！|？|…|$)").unwrap();
-    let re2 = Regex::new(r"([えけせてねへめれ])ます(。|\(|\s||!|\?|！|？|…|$)").unwrap();
-    let re3 = Regex::new(r"(\S+?[^、。\)\s])(。|\(|\s||!|\?|！|？|…|$)").unwrap();
+    let re1 = Regex::new(r"(.+?)(である|だ|です)(。|\(|\s|!|\?|！|？|…|$)").unwrap();
+    let re2 = Regex::new(r"([えけせてねへめれ])ます(。|\(|\s|!|\?|！|？|…|$)").unwrap();
+    let re3 = Regex::new(r"(\S+?[^、。\)\s])(。|\(|\s|!|\?|！|？|…|$)").unwrap();
     let re4 = Regex::new(r"ないにゃ").unwrap();
     let re5 = Regex::new(r"ない").unwrap();
 
