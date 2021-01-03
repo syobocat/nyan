@@ -6,6 +6,11 @@
   </head>
   <body>
     <h1>にゃん語ジェネレーター ver.1.3</h1>
+    <noscript>
+      <p>
+        <strong>このページではJavaScriptを使用しています。使用するにはJavaScriptを有効化する必要があります。</strong>
+      </p>
+    </noscript>
     <textarea id="input" class="input" rows="20" placeholder="入力"></textarea><br>
     <div class="options">
       <label for="bunmatsu">文末</label>
@@ -119,9 +124,5 @@
         document.getElementById("output").value = translate(original, replacer, document.getElementById("nai_to_nyai").checked);
       }
     </script>
-    <noscript>
-      <p>このページではJavaScriptを使用しています。</p>
-      </noscript>
-
   </body>
 </html>
