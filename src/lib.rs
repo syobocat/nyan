@@ -6,7 +6,8 @@ pub fn translate(text: &str, bunmatsu: &str, nai_to_nyai: bool) -> String {
     let re1 = Regex::new(r"(.+?)(である|だ|です)(。|\(|\s|!|\?|！|？|…|$)").unwrap();
     let re2 = Regex::new(r"([えけせてねへめれ])ます(。|\(|\s|!|\?|！|？|…|$)").unwrap();
     let re3 = Regex::new(r"(\S+?[^、。\)\s])(。|\(|\s|!|\?|！|？|…|$)").unwrap();
-    let re4 = Regex::new(r"ないにゃ").unwrap();
+    let nai = format!("ない{}", bunmatsu);
+    let re4 = Regex::new(&nai).unwrap();
     let re5 = Regex::new(r"ない").unwrap();
 
     let mut new: String;
